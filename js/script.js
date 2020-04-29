@@ -1,6 +1,7 @@
 
 //Global variables declared
 const form = document.querySelector("form");
+const jobTitle = document.getElementById('title');
 const otherJobRole = document.getElementById('other-title');
 const colorDiv = document.getElementById('colors-js-puns')
 const color = document.getElementById('color');
@@ -29,6 +30,23 @@ nameFocus()
 javascript is active and disables when it is not. Tested in browser */
 otherJobRole.style.display = "none";
 
+title.addEventListener('change', (e) => {
+const select = e.target;
+if ( select.value === "other"){
+  otherJobRole.style.display = 'block';
+} else {
+  otherJobRole.style.display = 'none';
+}
+})
+
+
+
+
+
+const colorMessage = document.createElement('p');
+const colorMessageLocation = color.previousElementSibling
+colorMessage.textContent = 'Please select a T-shirt theme';
+design.append(colorMessage);
 
 //Sets the color select box to hidden
 colorDiv.hidden = true;
@@ -236,7 +254,7 @@ const activitiesValidator = () => {
 //Checks to see if user has entered a credit card number between 13-16 digits. If not error message is supplied to the user.
 const creditCardNumberValidator = () =>{
   const creditCardNumberValue = creditCardNumber.value;
-  const regexTest = /^\w{13,16}$/.test(creditCardNumberValue);
+  const regexTest = /^\d{13,16}$/.test(creditCardNumberValue);
     if(regexTest === true){
       creditCardNumberError.hidden = true;
       return true;
@@ -249,7 +267,7 @@ const creditCardNumberValidator = () =>{
 //Checks to see if a 5 digit zipcode has been eneterd by user. If not error message is supplied to user.
 const zipCodeValidator = () => {
   const zipCodeValue = zipCode.value;
-  const regexTest = /^\w{5}$/.test(zipCodeValue);
+  const regexTest = /^\d{5}$/.test(zipCodeValue);
     if(regexTest === true){
       zipCodeError.hidden = true;
       return true;
@@ -262,7 +280,7 @@ const zipCodeValidator = () => {
 //Checks to see if a 3 digit cvv has been entered by user. If not a error message is suppled to user.
 const cvvValidator = () => {
   const cvvValue = cvv.value;
-  const regexTest = /^\w{3}$/.test(cvvValue);
+  const regexTest = /^\d{3}$/.test(cvvValue);
     if(regexTest === true){
       cvvError.hidden = true;
       return true;
